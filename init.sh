@@ -10,7 +10,6 @@ function exist_command() {
 function check_command() {
   local name=$1
   local true_name=$2
-  local cmd=$3
   if ! (exist_command "$name") then
     if [ -n "$true_name" ]; then
       echo "install $true_name"
@@ -35,7 +34,8 @@ esac
 
 if ! (exist_command brew) then
   echo "install brew"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" < /dev/null
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 fi
 
 if ! (exist_command anyenv) then
@@ -47,5 +47,11 @@ if ! (exist_command anyenv) then
 fi
 
 check_command zsh
+check_command thefuck
+
+if [ "$ZSH" != "$HOME/.oh-my-zsh" ]; then
+  yes | (curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh)
+  sed -i "1isource $HOME/.profile\n" "$HOME/.zshrc"
+fi
 
 exec $SHELL -l

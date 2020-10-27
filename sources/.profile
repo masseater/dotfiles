@@ -19,3 +19,24 @@ eval "$(anyenv init -)"
 function echo_path() {
   echo $PATH | tr ':' '\n'
 }
+
+plugins=(
+  alias-finder
+  command-not-found
+  common-aliases
+  docker
+  docker-compose
+  git
+  git-auto-fetch
+  git-flow
+  gitfast
+  github
+  gitignore
+  node
+  npm
+  python
+  rails
+  rust
+  thefuck
+  yarn
+)

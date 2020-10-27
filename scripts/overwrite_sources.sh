@@ -10,7 +10,7 @@ function overwrite() {
     echo "moved to $dotfiles_dir/tmp/$filename"
   fi
 
-  cp "$dotfiles_dir/source/$filename" "$HOME"
+  cp "$dotfiles_dir/sources/$filename" "$HOME"
 }
 
 overwrite .profile

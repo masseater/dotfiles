@@ -51,7 +51,8 @@ check_command thefuck
 
 if [ "$ZSH" != "$HOME/.oh-my-zsh" ]; then
   yes | (curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh)
-  sed -i "1isource $HOME/.profile\n" "$HOME/.zshrc"
+  sed -i '1isource '$HOME'/.profile\n' $HOME/.zshrc
+  sed -i -e '/^plugins/d' $HOME/.zshrc
 fi
 
-exec $SHELL -l
+echo "exec '$SHELL' -l"

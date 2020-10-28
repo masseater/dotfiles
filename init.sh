@@ -1,7 +1,10 @@
 #!/bin/bash
 
 # shellcheck disable=SC1107,SC2164
-readonly scripts_dir=$(cd "$(dirname "$0")"; pwd)
+readonly scripts_dir=$(
+  cd "$(dirname "$0")"
+  pwd
+)
 
 source "${scripts_dir}/_lib.sh"
 

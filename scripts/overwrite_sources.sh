@@ -3,6 +3,8 @@
 # shellcheck disable=SC2164
 readonly dotfiles_dir=$(cd "$(dirname "$0")/.."; pwd)
 
+mkdir -p "$dotfiles_dir/tmp"
+
 function overwrite() {
   local filename=$1
 

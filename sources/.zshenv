@@ -1,16 +1,16 @@
 #!/bin/bash
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
+if [ -d "$HOME/bin" ]; then
   PATH="$HOME/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
+if [ -d "$HOME/.local/bin" ]; then
   PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ -d "$HOME/.cargo/bin" ] ; then
+if [ -d "$HOME/.cargo/bin" ]; then
   PATH="$HOME/.cargo/bin:$PATH"
 fi
 
@@ -25,6 +25,8 @@ function echo_path() {
 # shellcheck disable=SC2034
 plugins=(
   alias-finder
+  brew
+  bundler
   command-not-found
   common-aliases
   docker
@@ -32,6 +34,7 @@ plugins=(
   git
   git-auto-fetch
   git-flow
+  git-hubflow
   gitfast
   github
   gitignore
@@ -39,7 +42,9 @@ plugins=(
   npm
   python
   rails
+  ruby
   rust
   thefuck
   yarn
+  zsh-completions
 )

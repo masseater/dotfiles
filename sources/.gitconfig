@@ -1,5 +1,11 @@
 [user]
-email = ika.u1f991@gmail.com
-name = u1f419
+name = U1F419
+email = tak.masuda@opt.ne.jp
+[core]
+editor = code
+[git]
+rebase = true
+[pull]
+rebase = true
 [push]
 default = current

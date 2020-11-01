@@ -1,4 +1,5 @@
 [user]
-	email = ika.u1f991@gmail.com
-	name = u1f419
-  default = current
+email = ika.u1f991@gmail.com
+name = u1f419
+[push]
+default = current

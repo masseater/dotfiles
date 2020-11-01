@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
   PATH="$HOME/bin:$PATH"
@@ -12,14 +14,15 @@ if [ -d "$HOME/.cargo/bin" ] ; then
   PATH="$HOME/.cargo/bin:$PATH"
 fi
 
-eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval $(thefuck --alias)
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+eval "$(thefuck --alias)"
 eval "$(anyenv init -)"
 
 function echo_path() {
-  echo $PATH | tr ':' '\n'
+  echo "${PATH}" | tr ':' '\n'
 }
 
+# shellcheck disable=SC2034
 plugins=(
   alias-finder
   command-not-found

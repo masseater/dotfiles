@@ -1,3 +1,5 @@
+#!/bin/bash
+
 function exist_command() {
   local cmd=$1
   type "$cmd" >/dev/null 2>&1
@@ -15,4 +17,8 @@ function check_command() {
       brew install "$name"
     fi
   fi
+}
+
+function isDarwin() {
+  [ "$(uname)" == "Darwin" ]
 }

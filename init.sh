@@ -1,12 +1,14 @@
 #!/bin/bash
 
-readonly scripts_dir="$(dirname $0 | pwd)/scripts"
-source $scripts_dir/_lib.sh
+# shellcheck disable=SC1107,SC2164
+readonly scripts_dir=$(cd "$(dirname "$0")"; pwd)
 
-read -p "Overwrite dotfiles, ok? (y/n): " yn
+source "${scripts_dir}/_lib.sh"
+
+read -r -p "Overwrite dotfiles, ok? (y/n): " yn
 case "$yn" in
 [yY]*)
-  $scripts_dir/overwrite_sources.sh
+  "${scripts_dir}/scripts/overwrite_sources.sh"
   ;;
 *)
   echo "Suspends process."
@@ -17,7 +19,7 @@ esac
 if ! (exist_command brew); then
   echo "install brew"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" </dev/null
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 if ! (exist_command anyenv); then
@@ -33,8 +35,9 @@ check_command thefuck
 
 if [ "$ZSH" != "$HOME/.oh-my-zsh" ]; then
   yes | (curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh)
-  sed -i '1isource '$HOME'/.profile\n' $HOME/.zshrc
-  sed -i -e '/^plugins/d' $HOME/.zshrc
+  sed -i '1isource '"$HOME"'/.profile\n' "$HOME"/.zshrc
+  sed -i -e '/^plugins/d' "$HOME"/.zshrc
 fi
 
-echo "exec '$SHELL' -l"
+# shellcheck disable=SC2016
+echo 'exec $SHELL -l'

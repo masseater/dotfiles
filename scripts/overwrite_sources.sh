@@ -1,6 +1,7 @@
 #!/bin/bash
 
-readonly dotfiles_dir=$(dirname "$1" | pwd)
+# shellcheck disable=SC2164
+readonly dotfiles_dir=$(cd "$(dirname "$0")"; pwd)
 
 function overwrite() {
   local filename=$1
@@ -15,3 +16,4 @@ function overwrite() {
 
 overwrite .profile
 overwrite .gitconfig
+overwrite .shellcheckrc

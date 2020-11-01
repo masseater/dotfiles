@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # shellcheck disable=SC2164
-readonly dotfiles_dir=$(cd "$(dirname "$0")"; pwd)
+readonly dotfiles_dir=$(cd "$(dirname "$0")/.."; pwd)
 
 function overwrite() {
   local filename=$1
@@ -14,6 +14,8 @@ function overwrite() {
   cp "$dotfiles_dir/sources/$filename" "$HOME"
 }
 
-overwrite .profile
-overwrite .gitconfig
-overwrite .shellcheckrc
+readonly filepathes="$dotfiles_dir/sources/"
+# shellcheck disable=SC2162
+while read -d $'\0' file; do
+    overwrite "$(basename "$file")"
+done < <(find "$filepathes" -mindepth 1 -maxdepth 1 -print0)

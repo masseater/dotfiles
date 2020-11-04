@@ -18,15 +18,6 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 eval "$(thefuck --alias)"
 eval "$(anyenv init -)"
 
-function echo_path() {
-  echo "${PATH}" | tr ':' '\n'
-}
-
-function gswcon() {
-  local branch=$1
-  git switch -c origin/$branch $branch
-}
-
 # shellcheck disable=SC2034
 plugins=(
   alias-finder

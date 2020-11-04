@@ -2,7 +2,7 @@
 name = U1F419
 email = tak.masuda@opt.ne.jp
 [core]
-editor = code
+editor = nano
 [git]
 rebase = true
 [pull]
